@@ -50,5 +50,6 @@ void HackParser::processC_INS(std::string& str)
 
 bool HackParser::hasMore()
 {
+    std::cout << "PEEK " << inputFile.peek() << std::endl;
     return inputFile.peek() != EOF;
 }

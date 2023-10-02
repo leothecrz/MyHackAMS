@@ -2,6 +2,7 @@
 
 #include <string>
 #include <fstream>
+#include <iostream>
 
 enum INSTRUCTION_TYPE
 {
