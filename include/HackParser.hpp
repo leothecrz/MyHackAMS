@@ -4,13 +4,7 @@
 #include <fstream>
 #include <iostream>
 
-enum INSTRUCTION_TYPE
-{
-    UNSET,
-    A_INS,
-    C_INS,
-    L_INS
-};
+#include "InsEnum.hpp"
 
 class HackParser 
 {
@@ -24,6 +18,7 @@ class HackParser
 
         bool hasMore();
     
+        void reset();
     
         INSTRUCTION_TYPE type;
         std::string symbol;
