@@ -4,6 +4,9 @@
 HackParser::HackParser(std::string filePath)
 {
     inputFile.open(filePath);
+
+    
+
     symbol = "";
     dest = "";
     comp = "";
@@ -39,12 +42,17 @@ void HackParser::processA_INS(std::string& str)
 
 void HackParser::processC_INS(std::string& str)
 {
-    int conpBreak = str.find_first_of('=');
+    int compBreak = str.find_first_of('=');
     int jumpBreak = str.find_first_of(':');
+    
     symbol="";
-    dest = str.substr(0,conpBreak-1);
-    comp = str.substr(conpBreak+1, jumpBreak-1);
-    jump = str.substr(jumpBreak+1,str.length()-1);
+
+    dest = str.substr(0,compBreak-1);
+    if( compBreak != -1 )
+        comp = str.substr(compBreak+1, jumpBreak-compBreak-1);
+    if(jumpBreak != -1)
+        jump = str.substr(jumpBreak+1);
+
     type = C_INS;
 }
 

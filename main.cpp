@@ -5,9 +5,9 @@
 int main(int charc , char** charv)
 {
     
-    if(charc > 0)
+    if(charc > 1)
     {
-        std::string input = std::string("C:\\Windows\\System32\\cmd.exe\\test.txt");
+        std::string input = std::string(charv[1]);
         HackParser parser(input);
 
         while(parser.hasMore())
