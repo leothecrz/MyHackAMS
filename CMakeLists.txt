@@ -4,7 +4,7 @@ project(MyHackAsm VERSION 0.1.0 LANGUAGES C CXX)
 include(CTest)
 enable_testing()
 
-add_executable(MyHackAsm HackParser.cpp main.cpp)
+add_executable(MyHackAsm HackInToBin.cpp HackParser.cpp main.cpp)
 
 target_include_directories( MyHackAsm
     PRIVATE

@@ -44,7 +44,7 @@ void HackParser::processC_INS(std::string& str)
     }
     else
     {
-        dest = str.substr(0,jumpBreak);
+        comp = str.substr(0,jumpBreak);
     }
 
     if(jumpBreak != -1)
