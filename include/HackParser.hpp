@@ -28,3 +28,5 @@ class HackParser
         std::ifstream inputFile;
 
 };
+
+std::string trimWhiteSpace(const std::string& str);

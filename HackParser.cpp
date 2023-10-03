@@ -26,7 +26,7 @@ void HackParser::Next()
 void HackParser::processA_INS(std::string& str)
 {
     reset();
-    symbol = str.substr(1,str.length()-1);
+    symbol = trimWhiteSpace( str.substr(1,str.length()-1) );
     type = A_INS;
 }
 
@@ -39,16 +39,16 @@ void HackParser::processC_INS(std::string& str)
 
     if( compBreak != -1 )
     {
-        dest = str.substr(0,compBreak-1);
-        comp = str.substr(compBreak+1, jumpBreak-compBreak-1);
+        dest = trimWhiteSpace( str.substr(0,compBreak-1) );
+        comp = trimWhiteSpace( str.substr(compBreak+1, jumpBreak-compBreak-1) );
     }
     else
     {
-        comp = str.substr(0,jumpBreak);
+        comp = trimWhiteSpace( str.substr(0,jumpBreak) );
     }
 
     if(jumpBreak != -1)
-        jump = str.substr(jumpBreak+1);
+        jump = trimWhiteSpace( str.substr(jumpBreak+1) );
 
     type = C_INS;
 }
@@ -67,4 +67,13 @@ void HackParser::reset()
     jump = "";
 
     type = UNSET;
+}
+
+std::string trimWhiteSpace(const std::string& str)
+{
+    int f = str.find_first_not_of(' ');
+    if(f == std::string::npos)
+        return str;
+    int e = str.find_last_not_of(' ');
+    return str.substr(f, (e-f+1));
 }

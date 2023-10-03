@@ -1,4 +1,4 @@
 @100
-MDA = D-1 : JGE
+AMD = D-1 : JGE
 DM=D+M
 0:JMP

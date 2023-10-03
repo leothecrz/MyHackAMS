@@ -50,7 +50,9 @@
         "ratio": "cpp",
         "iomanip": "cpp",
         "sstream": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "filesystem": "cpp",
+        "bitset": "cpp"
     },
 
     "cmake.debugConfig": {

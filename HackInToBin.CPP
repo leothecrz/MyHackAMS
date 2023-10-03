@@ -12,6 +12,7 @@ HackInToBin::HackInToBin()
     COMPCODES.insert({"!A", "0110001"});
     COMPCODES.insert({"-D", "0001111"});
     COMPCODES.insert({"-A", "0110011"});
+    
     COMPCODES.insert({"D+1", "0011111"});
     COMPCODES.insert({"A+1", "0110111"});
     COMPCODES.insert({"D-1", "0001110"});
@@ -21,6 +22,7 @@ HackInToBin::HackInToBin()
     COMPCODES.insert({"A-D","0000111"});
     COMPCODES.insert({"D&A", "0000000"});
     COMPCODES.insert({"D|A", "0010101"});
+
     COMPCODES.insert({"M", "1110000"});
     COMPCODES.insert({"!M", "1110001"});
     COMPCODES.insert({"-M", "1110011"});
@@ -33,8 +35,19 @@ HackInToBin::HackInToBin()
     COMPCODES.insert({"D|M", "1010101"});
 }
 
+std::string HackInToBin::compToBin(std::string& str)
+{
+    std::map<std::string,std::string>::iterator it;
+    it = COMPCODES.find(str);
+    if( it != COMPCODES.end() )
+        return COMPCODES[str]; 
+    std::cout << "ERROR in comp section of line" << std::endl; 
+    exit(1);
+}
+
 std::string HackInToBin::destToBin(std::string& str)
 {
+
     std::string out = "000";
 
     for(char c: str)
@@ -48,16 +61,6 @@ std::string HackInToBin::destToBin(std::string& str)
     }
 
     return out;
-}
-
-std::string HackInToBin::compToBin(std::string& str)
-{
-    std::map<std::string,std::string>::iterator it;
-    it = COMPCODES.find(str);
-    if( it != COMPCODES.end() )
-        return COMPCODES[str]; 
-    std::cout << "ERROR in comp section of line" << std::endl; 
-    exit(1);
 }
 
 std::string HackInToBin::jumpToBin(std::string& str)
