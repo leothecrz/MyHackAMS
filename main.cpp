@@ -77,29 +77,4 @@ int main(int charc , char** charv)
     }
     hackFile.close();
     
-    /*
-    {
-        std::string test = "MAD";
-        std::cout << inputToBin.destToBin(test) << "\n";
-        test = "JGT";
-        std::cout << inputToBin.jumpToBin(test) << "\n";
-        test = "JEQ";
-        std::cout << inputToBin.jumpToBin(test) << "\n";
-        test = "JGE";
-        std::cout << inputToBin.jumpToBin(test) << "\n";
-        test = "JLT";
-        std::cout << inputToBin.jumpToBin(test) << "\n";
-        test = "JNE";
-        std::cout << inputToBin.jumpToBin(test) << "\n";
-        test = "JLE";
-        std::cout << inputToBin.jumpToBin(test) << "\n";
-        test = "JMP";
-        std::cout << inputToBin.jumpToBin(test) << "\n";
-        test = "0";
-        std::cout << inputToBin.compToBin(test) << "\n";
-        test = "D+M";
-        std::cout << inputToBin.compToBin(test) << "\n";
-    }
-    */
-
 }
