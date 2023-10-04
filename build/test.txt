@@ -1,4 +1,0 @@
-@100
-AMD = D-1 : JGE
-DM=D+M
-0:JMP

@@ -1,32 +1,61 @@
+
 #pragma once
 
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <map>
+#include "enumInstruc.hpp"
 
-#include "InsEnum.hpp"
-
-class HackParser 
+class HackParser
 {
-    public:
-        HackParser(std::string filePath);
-        ~HackParser();
-        void Next();
+    private:
 
-        void processA_INS(std::string& str);
-        void processC_INS(std::string& str);
+        std::map<std::string, int> symbolTable;
+        int lineNumber_;
+        std::string symbol_;
+        std::string comp_;
+        std::string dest_;
+        std::string jump_;
+        std::string filePath;
+        INSTRUCTION_TYPES type_;
+        std::ifstream inputFile_;
 
-        bool hasMore();
-    
+        std::string currentLine;
+        bool fileSet;
+
+        void fillCurrentLine();
+        void setInstructionType();
+        void sendOpenErrorMessage();
+
+        void AINS();
+        void CINS();
+        void LINS();
+
         void reset();
-    
-        INSTRUCTION_TYPE type;
-        std::string symbol;
-        std::string dest;
-        std::string comp;
-        std::string jump;
-        std::ifstream inputFile;
+        void getNext();
+        void fillSymbolTable();
+        void fillSymbolTableLoopFunction();
+        void fillSymbolTableDefaults();
+        
+    public:
+        HackParser();
+        ~HackParser();
+
+        std::string trimWhiteSpace(const std::string& str);
+
+        void loadFile(const std::string& filepath);
+        bool endOfFile();
+        void closeFile();
+
+        bool hasSymbol(const std::string& sym);
+        std::string getSymbolVallue(const std::string& sym);
+
+        const int& getLN() {return lineNumber_;};
+        const std::string& getSym() {return symbol_;};
+        const std::string& getComp() {return comp_;};
+        const std::string& getDest() {return dest_;};
+        const std::string& getJump() {return jump_;};
+        const INSTRUCTION_TYPES& getType() {return type_;};
 
 };
-
-std::string trimWhiteSpace(const std::string& str);

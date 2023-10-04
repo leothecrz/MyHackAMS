@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(VersionTwoAssembler VERSION 0.1.0 LANGUAGES C CXX)
+project(MyHackAsm VERSION 0.1.0 LANGUAGES C CXX)
 
 include(CTest)
 enable_testing()
 
-add_executable(VersionTwoAssembler HackCoder.cpp HackParser.cpp main.cpp)
-target_include_directories( VersionTwoAssembler
+add_executable(MyHackAsm HackSymbolTable.cpp HackInToBin.cpp HackParser.cpp main.cpp)
+
+target_include_directories( MyHackAsm
     PRIVATE
     include/
 )
