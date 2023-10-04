@@ -24,7 +24,10 @@ int main(int charc, char** charv)
     HackParser parserMod;
     HackCoder coderMod;
 
-    parserMod.loadFile(charv[1]);
+    std::string path = "./";
+    path.append(charv[1]);
+
+    parserMod.loadFile(path);
     while(!parserMod.endOfFile())
     {
         std::cout << parserMod.getLN() <<"\n"<< parserMod.getType() <<"\n"<< parserMod.getSym() <<"\n"<< parserMod.getDest() <<"\n"<< parserMod.getComp() << "\n" << parserMod.getJump() << "\n";
@@ -70,7 +73,7 @@ std::string extractFileName(const char* str)
     //    slashIndex = slashTwoIndex;
 
     //if(slashIndex != -1)
-        return string.substr(0, string.length()-fileMarker);
+        return string.substr(0, fileMarker);
 
     //return string.substr(slashIndex+1, string.length()-slashIndex+1);
 

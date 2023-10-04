@@ -57,7 +57,7 @@
 
     "cmake.debugConfig": {
         "args": [
-            "test.txt"
+            "build/test/test.asm"
         ]
     }
     

@@ -47,7 +47,7 @@ void HackParser::loadFile(const std::string& filepath)
     {
         filePath = filepath;
         inputFile_.open(filepath);
-        if(inputFile_.failbit)
+        if(inputFile_.fail())
             sendOpenErrorMessage();
         std::cout << "The File: " << filepath <<" was opened." << "\n";
         fileSet = true;
