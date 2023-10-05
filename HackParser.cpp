@@ -46,8 +46,9 @@ void HackParser::loadFile(const std::string& filepath)
     if(!fileSet)
     {
         filePath = filepath;
+        inputFile_.clear();
         inputFile_.open(filepath);
-        if(inputFile_.fail())
+        if(!inputFile_.good())
             sendOpenErrorMessage();
         std::cout << "The File: " << filepath <<" was opened." << "\n";
         fileSet = true;
@@ -127,7 +128,7 @@ void HackParser::CINS()
         return;
     }
     dest_ = trimWhiteSpace( currentLine.substr(0, destBreak-1) );
-    comp_ = trimWhiteSpace( currentLine.substr(destBreak+1, jumpBreak-destBreak+1) );
+    comp_ = trimWhiteSpace( currentLine.substr(destBreak+1, jumpBreak-destBreak-1) );
     jump_ = trimWhiteSpace( currentLine.substr(jumpBreak+1) );
 }
 
@@ -196,7 +197,7 @@ void HackParser::fillSymbolTableLoopFunction()
     int pIndex = currentLine.find_first_of('(');
     int pTwoIndex= currentLine.find_first_of(')');
 
-    std::string activeSym = trimWhiteSpace( currentLine.substr(pIndex+1, pIndex-pTwoIndex+1) );
+    std::string activeSym = trimWhiteSpace( currentLine.substr(pIndex+1, pTwoIndex-pIndex-1) );
     
     if( symbolTable.insert({activeSym, lineNumber_}).second )
         std::cout << activeSym << " " << lineNumber_ << "\n";
@@ -209,8 +210,9 @@ void HackParser::fillSymbolTable()
     {
         fillSymbolTableLoopFunction();
     }
-    closeFile();
-    loadFile(filePath);
+    
+    inputFile_.clear();
+    inputFile_.seekg(0, std::ios::beg);
 }
 
 bool HackParser::hasSymbol(const std::string& sym)

@@ -24,7 +24,7 @@ int main(int charc, char** charv)
     HackParser parserMod;
     HackCoder coderMod;
 
-    std::string path = "./";
+    std::string path = "";
     path.append(charv[1]);
 
     parserMod.loadFile(path);
@@ -35,7 +35,7 @@ int main(int charc, char** charv)
         {
             case A_INSTRUCTION:
                 if( is_number( parserMod.getSym() ))
-                    outFile << "0" << numToBin(parserMod.getSym());
+                    outFile << "0" << numToBin(parserMod.getSym()) << "\n" ;
                 else
                     if(parserMod.hasSymbol(parserMod.getSym()))
                         outFile << "0" << numToBin( parserMod.getSymbolVallue(parserMod.getSym()) ) << "\n";
