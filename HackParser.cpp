@@ -56,9 +56,7 @@ void HackParser::loadFile(const std::string& filepath)
         fillSymbolTable();
     }   
     else
-    {
-        // CLOSE FILE && OPEN NEW
-    }
+        std::cout << "File is already Open" << "\n";
 }
 
 std::string HackParser::trimWhiteSpace(const std::string& str)
@@ -81,8 +79,11 @@ std::string HackParser::trimComments(const std::string& str)
 
 void HackParser::setInstructionType()
 {
-    currentLine = trimComments( trimWhiteSpace(currentLine) );
 
+    if(currentLine.length() < 1)
+        return;
+
+    currentLine = trimWhiteSpace( trimComments( currentLine ) );
     switch (currentLine[0])
     {
     case '@':
@@ -151,6 +152,7 @@ void HackParser::LINS()
 void HackParser::fillCurrentLine()
 {
     std::getline(inputFile_, currentLine);
+    currentLine = trimWhiteSpace(currentLine);
 }
 
 void HackParser::getNext()
@@ -200,6 +202,14 @@ void HackParser::fillSymbolTableDefaults()
 
 void HackParser::fillSymbolTableLoopFunction()
 {
+
+    if(type_ == A_INSTRUCTION && !is_number(symbol_) )
+    {
+        if ( !hasSymbol(symbol_) )
+            symbolTable.insert({symbol_, lineNumber_});
+        return;
+    }
+
     if(type_ != L_INSTRUCTION)
         return;
 

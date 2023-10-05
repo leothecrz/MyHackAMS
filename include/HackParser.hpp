@@ -6,6 +6,7 @@
 #include <iostream>
 #include <map>
 #include "enumInstruc.hpp"
+#include "Helper.hpp"
 
 class HackParser
 {
