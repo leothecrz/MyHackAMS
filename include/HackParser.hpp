@@ -37,7 +37,8 @@ class HackParser
         void fillSymbolTable();
         void fillSymbolTableLoopFunction();
         void fillSymbolTableDefaults();
-        
+        std::string trimComments(const std::string& str);
+
     public:
         HackParser();
         ~HackParser();

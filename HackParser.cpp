@@ -70,9 +70,18 @@ std::string HackParser::trimWhiteSpace(const std::string& str)
     return str.substr(f, (e-f+1));
 }
 
+std::string HackParser::trimComments(const std::string& str)
+{
+    int index = str.find_first_of('/');
+    if(index == 0 || index == std::string::npos)
+        return str;
+
+    return str.substr(0, index);
+}
+
 void HackParser::setInstructionType()
 {
-    currentLine = trimWhiteSpace(currentLine);
+    currentLine = trimComments( trimWhiteSpace(currentLine) );
 
     switch (currentLine[0])
     {
@@ -84,7 +93,7 @@ void HackParser::setInstructionType()
         LINS();
         break;
     case '/':
-        endOfFile(); // CALL GET NEXT SAFETLY
+        type_ = UNSET;
         break;
     default:
         lineNumber_++;
@@ -213,6 +222,7 @@ void HackParser::fillSymbolTable()
     
     inputFile_.clear();
     inputFile_.seekg(0, std::ios::beg);
+    lineNumber_ = 0;
 }
 
 bool HackParser::hasSymbol(const std::string& sym)
