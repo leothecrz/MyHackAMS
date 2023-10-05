@@ -107,7 +107,7 @@ void HackParser::CINS()
     type_ = C_INSTRUCTION;
 
     int destBreak = currentLine.find_first_of('=');
-    int jumpBreak = currentLine.find_first_of(':');
+    int jumpBreak = currentLine.find_first_of(';');
     
     if(destBreak == std::string::npos)
     {
@@ -117,13 +117,13 @@ void HackParser::CINS()
             return;
         }
 
-        comp_ = trimWhiteSpace( currentLine.substr(0, jumpBreak-1) );
+        comp_ = trimWhiteSpace( currentLine.substr(0, jumpBreak) );
         jump_ = trimWhiteSpace( currentLine.substr(jumpBreak+1) );
         return;
     }
     if(jumpBreak ==std::string::npos)
     {
-        dest_ = trimWhiteSpace( currentLine.substr(0, destBreak-1 ) );
+        dest_ = trimWhiteSpace( currentLine.substr(0, destBreak ) );
         comp_ = trimWhiteSpace( currentLine.substr(destBreak+1) );
         return;
     }

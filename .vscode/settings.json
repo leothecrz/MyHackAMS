@@ -57,7 +57,7 @@
 
     "cmake.debugConfig": {
         "args": [
-            "/Users/Leonardo/Documents/REPO/C++/MyHackAMS/test.txt"
+            "/Users/Leonardo/Documents/REPO/C++/MyHackAMS/build/test/test.asm"
         ]
     }
     

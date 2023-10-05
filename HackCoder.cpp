@@ -91,7 +91,6 @@ std::string HackCoder::jumpToBin(const std::string& str)
 
                 case 'N':
                     return "101";
-                    
                 case 'G':
                     out[2] = '1';
                     break;
@@ -100,6 +99,8 @@ std::string HackCoder::jumpToBin(const std::string& str)
                     break;
                 case 'L':
                     out[0] = '1';
+                    break;
+                case 'T':
                     break;
                 default:
                     std::cout << "ERROR in jump section of line" << std::endl; 
