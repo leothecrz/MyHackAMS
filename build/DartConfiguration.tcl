@@ -4,14 +4,14 @@
 
 
 # Configuration directories and files
-SourceDirectory: Z:/Users/Repo/C++/HackASMBLR
-BuildDirectory: Z:/Users/Repo/C++/HackASMBLR/build
+SourceDirectory: C:/Users/Leonardo/Documents/REPO/C++/MyHackAMS
+BuildDirectory: C:/Users/Leonardo/Documents/REPO/C++/MyHackAMS/build
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: thEcRzTower
+Site: LAPTOP-5K687PFJ
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Win32-mingw32-make
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "C:/Program Files/CMake/bin/cmake.exe" "Z:/Users/Repo/C++/HackASMBLR"
+ConfigureCommand: "C:/Program Files/CMake/bin/cmake.exe" "C:/Users/Leonardo/Documents/REPO/C++/MyHackAMS"
 MakeCommand: C:/Program\ Files/CMake/bin/cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 
@@ -63,8 +63,8 @@ UpdateOptions:
 UpdateType: git
 
 # Compiler info
-Compiler: C:/msys64/mingw64/bin/g++.exe
-CompilerVersion: 12.2.0
+Compiler: C:/msys64/ucrt64/bin/g++.exe
+CompilerVersion: 13.1.0
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 
@@ -76,12 +76,12 @@ CudaSanitizerCommand:
 CudaSanitizerCommandOptions: 
 MemoryCheckType: 
 MemoryCheckSanitizerOptions: 
-MemoryCheckCommand: C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.7/bin/cuda-memcheck.exe
+MemoryCheckCommand: MEMORYCHECK_COMMAND-NOTFOUND
 MemoryCheckCommandOptions: 
 MemoryCheckSuppressionFile: 
 
 # Coverage
-CoverageCommand: C:/msys64/mingw64/bin/gcov.exe
+CoverageCommand: C:/msys64/ucrt64/bin/gcov.exe
 CoverageExtraFlags: -l
 
 # Testing options

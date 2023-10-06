@@ -84,6 +84,7 @@ void HackParser::setInstructionType()
         return;
 
     currentLine = trimWhiteSpace( trimComments( currentLine ) );
+    if(currentLine.length() > 1)
     switch (currentLine[0])
     {
     case '@':
