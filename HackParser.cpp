@@ -245,7 +245,7 @@ bool HackParser::hasSymbol(const std::string& sym)
     return false;
 }
 
-std::string HackParser::getSymbolVallue(const std::string& sym)
+std::string HackParser::getSymbolValue(const std::string& sym)
 {
     std::map<std::string,int>::iterator it;
     it = symbolTable.find(sym);

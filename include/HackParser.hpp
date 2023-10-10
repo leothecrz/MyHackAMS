@@ -13,16 +13,17 @@ class HackParser
     private:
 
         std::map<std::string, int> symbolTable;
-        int lineNumber_;
+        
+        std::string currentLine;
         std::string symbol_;
         std::string comp_;
         std::string dest_;
         std::string jump_;
-        std::string filePath;
         INSTRUCTION_TYPES type_;
-        std::ifstream inputFile_;
+        int lineNumber_;
 
-        std::string currentLine;
+        std::string filePath;
+        std::ifstream inputFile_;
         bool fileSet;
 
         void fillCurrentLine();
@@ -38,20 +39,21 @@ class HackParser
         void fillSymbolTable();
         void fillSymbolTableLoopFunction();
         void fillSymbolTableDefaults();
+
         std::string trimComments(const std::string& str);
+        std::string trimWhiteSpace(const std::string& str);
 
     public:
         HackParser();
         ~HackParser();
 
-        std::string trimWhiteSpace(const std::string& str);
 
         void loadFile(const std::string& filepath);
         bool endOfFile();
         void closeFile();
 
         bool hasSymbol(const std::string& sym);
-        std::string getSymbolVallue(const std::string& sym);
+        std::string getSymbolValue(const std::string& sym);
 
         const int& getLN() {return lineNumber_;};
         const std::string& getSymb() {return symbol_;};

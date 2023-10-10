@@ -1,55 +1,10 @@
 
 #include "main.hpp"
 
-std::string extractFileName(const char* str)
-{
-    std::string string = str;
-    int fileMarker = string.find_last_of('.');
-    return string.substr(0, fileMarker);
-}
-
-void fileExistCheck(const std::string& str)
-{
-    if(!std::filesystem::exists(str))
-        return;
-    
-    std::cout << "The .HACK file already exists." << "Do you want to replace it? (y/n)(1/0): ";
-    char choice;
-    std::cin >> choice;
-
-    if (choice != 'y' && choice != 'Y' && choice != '1') 
-    {
-        std::cout << "Operation cancelled.\n";
-        exit(0);
-    }  
-}
-
-void argumentSizeCheck(int inputs)
-{
-    if(inputs < 2)
-    {
-        std::cout << "No Input File" << std::endl;
-        exit(0);
-    }
-    if(inputs > 2)
-    {
-        std::cout << "TOO Many Arguments" << std::endl;
-        exit(0);
-    }
-}
-
-std::string numToBin(const std::string& str)
-{
-    int value = std::stoi(str);
-    return std::bitset<15>(value).to_string(); 
-}
-
 int main(int charc, char** charv)
 {
     argumentSizeCheck(charc);
-
-    std::string fileName = extractFileName(charv[1]);
-    std::string outFileName = fileName.append(".hack");
+    std::string outFileName = extractFileName( charv[1] ).append( ".hack" );
 
     fileExistCheck(outFileName);
     std::ofstream outFile(outFileName);
@@ -74,7 +29,7 @@ int main(int charc, char** charv)
                     outFile << "0" << numToBin(parserMod.getSymb()) << "\n" ;
                 else
                     if(parserMod.hasSymbol(parserMod.getSymb()))
-                        outFile << "0" << numToBin( parserMod.getSymbolVallue(parserMod.getSymb()) ) << "\n";
+                        outFile << "0" << numToBin( parserMod.getSymbolValue(parserMod.getSymb()) ) << "\n";
                     else    
                         {
                             std::cout << "Symbol could not be found. SYM='" << parserMod.getSymb() << "'" << "\n";
