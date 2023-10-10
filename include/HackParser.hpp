@@ -54,7 +54,7 @@ class HackParser
         std::string getSymbolVallue(const std::string& sym);
 
         const int& getLN() {return lineNumber_;};
-        const std::string& getSym() {return symbol_;};
+        const std::string& getSymb() {return symbol_;};
         const std::string& getComp() {return comp_;};
         const std::string& getDest() {return dest_;};
         const std::string& getJump() {return jump_;};

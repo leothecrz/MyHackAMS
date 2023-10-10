@@ -213,15 +213,14 @@ void HackParser::fillSymbolTableLoopFunction()
 
     if(type_ != L_INSTRUCTION)
         return;
-
+    
     int pIndex = currentLine.find_first_of('(');
     int pTwoIndex= currentLine.find_first_of(')');
-
-    std::string activeSym = trimWhiteSpace( currentLine.substr(pIndex+1, pTwoIndex-pIndex-1) );
+    std::string activeSym = trimWhiteSpace( currentLine.substr( pIndex + 1, pTwoIndex- pIndex- 1) );
     
     if( symbolTable.insert({activeSym, lineNumber_}).second )
         std::cout << activeSym << " " << lineNumber_ << "\n";
-   
+    
 }
 
 void HackParser::fillSymbolTable()
