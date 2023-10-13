@@ -24,6 +24,11 @@
    D=M
    @32
    D=D+A
+   //
+   //
+   //
+   //
+   //
    @address
    M=D
    @counter

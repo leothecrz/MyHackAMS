@@ -69,7 +69,8 @@ void HackParser::fillSymbolTable()
     {
         fillSymbolTableLoopFunction();
     }
-    
+    std::cout << std::endl;
+
     inputFile_.clear();
     inputFile_.seekg(0, std::ios::beg);
     lineNumber_ = 0;
@@ -216,7 +217,7 @@ void HackParser::getNext()
 
 bool HackParser::endOfFile()
 {
-    std::cout << "\n PEEK " << inputFile_.peek() << std::endl;
+    //std::cout << "\n PEEK " << inputFile_.peek() << std::endl;
     if (inputFile_.peek() != EOF )
     {
         getNext();
