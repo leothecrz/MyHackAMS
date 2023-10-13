@@ -35,11 +35,6 @@ HackCoder::HackCoder()
     COMPCODES.insert({"D|M", "1010101"});
 }
 
-HackCoder::~HackCoder()
-{
-    
-}
-
 std::string HackCoder::compToBin(const std::string& str)
 {
     std::map<std::string,std::string>::iterator it;

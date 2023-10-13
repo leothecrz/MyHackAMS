@@ -11,7 +11,6 @@ class HackCoder
 
     public:
         HackCoder();
-        ~HackCoder();
 
         std::string destToBin(const std::string&);
         std::string compToBin(const std::string&);

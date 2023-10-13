@@ -15,11 +15,11 @@ int main(int charc, char** charv)
 
     while(!parserMod.endOfFile())
     {
-        std::cout << parserMod.getLN() <<"\n"
-        << parserMod.getType() <<"\n"
-        << parserMod.getSymb() <<"\n"
-        << parserMod.getDest() <<"\n"
-        << parserMod.getComp() <<"\n" 
+        std::cout << parserMod.getLN() <<" "
+        << parserMod.getType() <<" "
+        << parserMod.getSymb() <<" "
+        << parserMod.getDest() <<" "
+        << parserMod.getComp() <<" " 
         << parserMod.getJump() <<"\n";
 
         switch ( parserMod.getType() )
